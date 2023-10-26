@@ -1,7 +1,11 @@
 import { Text, View} from "react-native";
+import {useContext} from 'react';
+import {UtilsContext} from './Context';
 
 export default function Usuarios()
 {
+    
+    const {utils, SetUtils} = useContext(UtilsContext)
     return(
         <>        
         <Text style={{
@@ -18,10 +22,10 @@ export default function Usuarios()
            width:"80%",
            padding:"5%"
         }}>
-            <Text> Nome: </Text>
-            <Text> Idade: </Text>
-            <Text> Sexo: </Text>
-            <Text> Recebe Notificação: </Text>
+            <Text> Nome: {utils.nome}</Text>
+            <Text> Idade: {utils.idade}</Text>
+            <Text> Sexo: {utils.sexo}</Text>
+            <Text> Recebe Notificação: {utils.notifica == false ? "Não":"Sim"}</Text>
         </View>
         </>
     )

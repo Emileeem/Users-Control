@@ -1,12 +1,14 @@
 // import { StatusBar } from 'expo-status-bar';
+// import { Button } from 'react-native-web';
+import {useState} from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import {useState} from 'react'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, TouchableWithoutFeedback, Image, FlatList, SectionList, Switch} from 'react-native';
-// import { Button } from 'react-native-web';
 import Login  from './Login';
-import Usuarios from './Usuarios'
+import Usuarios from './Usuarios';
 import Cadastro from './Cadastro';
+import {UtilsContext} from './Context';
+
 export default function App() {
   // const [senha, setSenha] = useState("Teste")
   // const [inicio, setInicio] = useState(false)
@@ -15,15 +17,18 @@ export default function App() {
   //   title:"Main Dishes",
   //   data: ['Pizza', 'Burguer']
   // }]
+  const [utils, SetUtils] = useState({})
   const Stack = createStackNavigator()
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="Cadastro" component={Cadastro}/>
-        <Stack.Screen name="Usuarios" component={Usuarios}/>
-      </Stack.Navigator>
+      <UtilsContext.Provider value={{utils, SetUtils}}>
+        <Stack.Navigator>
+          <Stack.Screen name="Login" options={{headerShown: false, title: 'Login'}} component={Login}/>
+          <Stack.Screen name="Cadastro" options={{ headerShown: false}} component={Cadastro}/>
+          <Stack.Screen name="Usuarios" component={Usuarios}/>
+        </Stack.Navigator>
+      </UtilsContext.Provider>
     </NavigationContainer>
     
     // <>

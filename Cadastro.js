@@ -1,8 +1,22 @@
 import { View, Text, TextInput, Image, Switch, TouchableOpacity} from "react-native";
-import {useState} from 'react'
+import {useState, useContext} from 'react';
+import {UtilsContext} from './Context';
 
 export default function Cadastro(props){
     const [inicio, setInicio] = useState(false)
+    const {utils, SetUtils} = useContext(UtilsContext)
+    const [nome, setNome] = useState("")
+    const [idade, setIdade] = useState("")
+    const [sexo, setSexo] = useState("")
+    const [senha, setSenha] = useState("")
+    const [confirmar, setConfirmarSenha] = useState("")
+    const [email, setEmail] = useState("")
+    console.log("utils", utils)
+
+    function goToUsuarios(){
+        SetUtils({...utils, email:email, nome:nome, idade:idade, sexo:sexo, senha:senha, confirmarSenha:confirmar, notifica: inicio})
+        props.navigation.navigate('Usuarios')
+    }
     return(
         <>
             <Image style={{
@@ -19,14 +33,16 @@ export default function Cadastro(props){
                 marginLeft:"5%",
                 marginBottom:"10px"
             }} > Nome:</Text>
-            <TextInput style={{
-                color:"black",
-                backgroundColor:"white",
-                borderRadius:"5px",
-                height:"25px",
-                marginLeft:"5%",
-                marginBottom:"12px",
-                width:"90%"
+            <TextInput onChangeText={text => setNome(text)}
+                value={nome}
+                style={{
+                    color:"black",
+                    backgroundColor:"white",
+                    borderRadius:"5px",
+                    height:"25px",
+                    marginLeft:"5%",
+                    marginBottom:"12px",
+                    width:"90%"
             }} />       
             <View style={{
                 display:"flex",
@@ -40,7 +56,9 @@ export default function Cadastro(props){
                         flexDirection:"row",
                         justifyContent:"space-between"
                     }} > Idade:</Text>
-                    <TextInput style={{
+                    <TextInput onChangeText={text => setIdade(text)}
+                    value={idade}
+                    style={{
                         color:"black",
                         backgroundColor:"white",
                         borderRadius:"5px",
@@ -60,7 +78,9 @@ export default function Cadastro(props){
                         flexDirection:"row",
                         justifyContent:"space-between"
                     }} > Sexo:</Text>
-                    <TextInput style={{
+                    <TextInput onChangeText={text => setSexo(text)}
+                    value={sexo}
+                    style={{
                         color:"black",
                         backgroundColor:"white",
                         borderRadius:"5px",
@@ -77,7 +97,9 @@ export default function Cadastro(props){
                 marginLeft:"5%",
                 marginBottom:"10px"
             }} > Email:</Text>
-            <TextInput style={{
+            <TextInput onChangeText={text => setEmail(text)}
+                value={email}
+                 style={{
                 color:"black",
                 backgroundColor:"white",
                 borderRadius:"5px",
@@ -90,7 +112,9 @@ export default function Cadastro(props){
                 marginLeft:"5%",
                 marginBottom:"10px"
             }} > Senha:</Text>
-            <TextInput style={{
+            <TextInput onChangeText={text => setSenha(text)}
+                value={senha}
+                style={{
                 color:"black",
                 backgroundColor:"white",
                 borderRadius:"5px",
@@ -105,7 +129,9 @@ export default function Cadastro(props){
                 marginLeft:"5%",
                 marginBottom:"10px"
             }} > Confirma Senha:</Text>
-            <TextInput style={{
+            <TextInput onChangeText={text => setConfirmarSenha(text)}
+                value={confirmar}
+                style={{
                 color:"black",
                 backgroundColor:"white",
                 borderRadius:"5px",
@@ -130,7 +156,7 @@ export default function Cadastro(props){
                 thumbColor={ "#000" }
                 activeThumbColor={"#000"}
             />
-            <TouchableOpacity title="Cadastrar" onPress={() => props.navigation.navigate("Usuarios")}>
+            <TouchableOpacity title="Cadastrar" onPress={() => goToUsuarios()}>
                 <View style={{
                     width:"200px",
                     height:"60px",

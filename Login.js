@@ -1,6 +1,11 @@
 import { View, Text, TextInput, TouchableOpacity} from "react-native";
+import {useState, useContext} from 'react';
+import {UtilsContext} from './Context';
 
-export default function Login(props){ //com default pode ser importado sem chaves
+export default function Login(props){ //com default pode ser importado sem chaves 
+    const {utils, SetUtils} = useContext(UtilsContext)
+    console.log("utils", utils)
+
     return(
         <>
             <Text style={{
@@ -15,13 +20,15 @@ export default function Login(props){ //com default pode ser importado sem chave
                 marginLeft:"5%",
                 marginBottom:"5px"
             }}> Email:</Text>
-            <TextInput style={{
-                color:"black",
-                backgroundColor:"white",
-                borderRadius:"5px",
-                height:"25px",
-                marginLeft:"5%",
-                width:"90%"
+            <TextInput 
+                placeholder="email"
+                style={{
+                    color:"black",
+                    backgroundColor:"white",
+                    borderRadius:"5px",
+                    height:"25px",
+                    marginLeft:"5%",
+                    width:"90%"
             }} />
             <Text style={{
                 fontSize:"15px",
@@ -55,7 +62,7 @@ export default function Login(props){ //com default pode ser importado sem chave
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity title="Cadastro" onPress={() => props.navigation.navigate("Cadastro")}>
+            <TouchableOpacity title="Cadastro"  onPress={() => props.navigation.navigate("Cadastro")}>
                 <View style={{
                     width:"100px",
                     innerHeight:"40px",
