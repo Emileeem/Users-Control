@@ -13,13 +13,18 @@ export default function Login(props){ //com default pode ser importado sem chave
                 textAlign:"center",
                 fontWeight:"bold",
                 margin:"10%",
-            }}>Login</Text>
+            }}>
+                Login
+            </Text>
 
             <Text style={{
                 fontSize:"15px",
                 marginLeft:"5%",
                 marginBottom:"5px"
-            }}> Email:</Text>
+            }}> 
+                Email:
+            </Text>
+
             <TextInput 
                 placeholder="email"
                 style={{
@@ -30,12 +35,16 @@ export default function Login(props){ //com default pode ser importado sem chave
                     marginLeft:"5%",
                     width:"90%"
             }} />
+
             <Text style={{
                 fontSize:"15px",
                 marginTop:"20px",
                 marginLeft:"5%",
                 marginBottom:"5px"
-            }}> Senha:</Text>
+            }}> 
+                Senha:
+            </Text>
+
             <TextInput style={{
                 color:"black",
                 backgroundColor:"white",
@@ -48,7 +57,10 @@ export default function Login(props){ //com default pode ser importado sem chave
                 secureTextEntry = {true}
                 />
 
-            <TouchableOpacity title="Usuarios" onPress={() => props.navigation.navigate("Usuarios")}>
+            <TouchableOpacity 
+                title="Usuarios" 
+                onPress={() => props.navigation.navigate("Usuarios")}>
+                    
                 <View style={{
                     width:"200px",
                     height:"60px",
@@ -58,18 +70,38 @@ export default function Login(props){ //com default pode ser importado sem chave
                     borderRadius:"15px",
                     marginBottom:"10px"
                 }}>
-                <Text style={{color:"black", textAlign:"center", fontWeight:"bold"}}>Login</Text>
+            
+                <Text style={{
+                    color:"black", 
+                    textAlign:"center", 
+                    fontWeight:"bold"
+                    }}>
+                    Login
+                </Text>
+
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity title="Cadastro"  onPress={() => props.navigation.navigate("Cadastro")}>
+
+            <TouchableOpacity 
+                title="Cadastro"  
+                onPress={() => props.navigation.navigate("Cadastro")}>
+
                 <View style={{
                     width:"100px",
                     innerHeight:"40px",
                     backgroundColor:"white",
                     marginLeft:"34%"
                 }}>
-                <Text style={{color:"black", textAlign:"center"}}>Cadastrar</Text>
+
+                <Text 
+                    style={{
+                        color:"black", 
+                        textAlign:"center"
+                    }}>
+                    Cadastrar
+                </Text>
+
                 </View>
 
             </TouchableOpacity>

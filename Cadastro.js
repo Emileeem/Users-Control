@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Image, Switch, TouchableOpacity} from "react-native";
+import { View, Text, TextInput, Image, Switch, TouchableOpacity, StyleSheet} from "react-native";
 import {useState, useContext} from 'react';
 import {UtilsContext} from './Context';
 
@@ -11,141 +11,148 @@ export default function Cadastro(props){
     const [senha, setSenha] = useState("")
     const [confirmar, setConfirmarSenha] = useState("")
     const [email, setEmail] = useState("")
+    const styles = StyleSheet.create({
+        input:{ 
+            color:"black",
+            backgroundColor:"white",
+            borderRadius:"5px",
+            height:"25px",
+            marginLeft:"10%",
+            marginBottom:"12px",
+            width:"90%",
+            display:"flex",
+            flexDirection:"row",
+            justifyContent:"space-between"
+        },
+        input2:{
+            color:"black",
+            backgroundColor:"white",
+            borderRadius:"5px",
+            height:"25px",
+            marginLeft:"5%",
+            marginBottom:"12px",
+            width:"90%"
+        }, 
+        text:{
+            marginLeft:"10%",
+            marginBottom:"10px",
+            flexDirection:"row",
+            justifyContent:"space-between"
+        }
+
+      });
     console.log("utils", utils)
 
     function goToUsuarios(){
-        SetUtils({...utils, email:email, nome:nome, idade:idade, sexo:sexo, senha:senha, confirmarSenha:confirmar, notifica: inicio})
+        SetUtils({...utils, users: [...utils.users,{email:email, nome:nome, idade:idade, sexo:sexo, senha:senha, confirmarSenha:confirmar, notifica: inicio}]})
         props.navigation.navigate('Usuarios')
     }
     return(
         <>
-            <Image style={{
-                height:"200px",
-                width:"200px",
-                marginLeft:"17%",
-                marginBottom:"20px"
-            }}
-            source={{
-                uri:"https://cdn-icons-png.flaticon.com/512/17/17004.png"
-            }}
-             />
+            <Image 
+                style={{
+                    height:"200px",
+                    width:"200px",
+                    marginLeft:"17%",
+                    marginBottom:"20px"
+                }}
+                source={{
+                    uri:"https://cdn-icons-png.flaticon.com/512/17/17004.png"
+                }}
+            />
+
             <Text style={{
                 marginLeft:"5%",
                 marginBottom:"10px"
-            }} > Nome:</Text>
-            <TextInput onChangeText={text => setNome(text)}
+            }} > 
+                Nome:
+            </Text>
+
+            <TextInput 
+                onChangeText={text => setNome(text)}
                 value={nome}
-                style={{
-                    color:"black",
-                    backgroundColor:"white",
-                    borderRadius:"5px",
-                    height:"25px",
-                    marginLeft:"5%",
-                    marginBottom:"12px",
-                    width:"90%"
-            }} />       
+                style={styles.input2}
+            />   
+
             <View style={{
                 display:"flex",
                 flexDirection:"row",
                 justifyContent:"space-between"
             }} > 
                 <View>
-                    <Text style={{
-                        marginLeft:"10%",
-                        marginBottom:"10px",
-                        flexDirection:"row",
-                        justifyContent:"space-between"
-                    }} > Idade:</Text>
+
+                    <Text style={styles.text} > 
+                        Idade:
+                    </Text>
+
                     <TextInput onChangeText={text => setIdade(text)}
                     value={idade}
-                    style={{
-                        color:"black",
-                        backgroundColor:"white",
-                        borderRadius:"5px",
-                        height:"25px",
-                        marginLeft:"10%",
-                        marginBottom:"12px",
-                        width:"90%",
-                        display:"flex",
-                        flexDirection:"row",
-                        justifyContent:"space-between"
-                    }}/>
+                    style={styles.input}/>
+
                 </View>
+
                 <View>
-                    <Text style={{
-                        marginLeft:"10%",
-                        marginBottom:"10px",
-                        flexDirection:"row",
-                        justifyContent:"space-between"
-                    }} > Sexo:</Text>
-                    <TextInput onChangeText={text => setSexo(text)}
-                    value={sexo}
-                    style={{
-                        color:"black",
-                        backgroundColor:"white",
-                        borderRadius:"5px",
-                        height:"25px",
-                        marginLeft:"10%",
-                        marginBottom:"12px",
-                        width:"80%",
-                        flexDirection:"row",
-                        justifyContent:"space-between"
-                    }}/>
+
+                    <Text style={styles.text}> 
+                        Sexo:
+                    </Text>
+
+                    <TextInput 
+                        onChangeText={text => setSexo(text)}
+                        value={sexo}
+                        style={styles.input}/>
+
                 </View>
-            </View> 
+            </View>
+
             <Text style={{
                 marginLeft:"5%",
                 marginBottom:"10px"
-            }} > Email:</Text>
-            <TextInput onChangeText={text => setEmail(text)}
+            }} > 
+                Email:
+            </Text>
+
+            <TextInput 
+                onChangeText={text => setEmail(text)}
                 value={email}
-                 style={{
-                color:"black",
-                backgroundColor:"white",
-                borderRadius:"5px",
-                height:"25px",
-                marginLeft:"5%",
-                marginBottom:"12px",
-                width:"90%"
-            }}/>
+                 style={styles.input2}
+            />
+
             <Text style={{
                 marginLeft:"5%",
                 marginBottom:"10px"
-            }} > Senha:</Text>
-            <TextInput onChangeText={text => setSenha(text)}
+            }} > 
+                Senha:
+            </Text>
+
+            <TextInput 
+                onChangeText={text => setSenha(text)}
                 value={senha}
-                style={{
-                color:"black",
-                backgroundColor:"white",
-                borderRadius:"5px",
-                height:"25px",
-                marginLeft:"5%",
-                marginBottom:"12px",
-                width:"90%"
-            }}
-            secureTextEntry = {true}
+                style={styles.input2}
+                secureTextEntry = {true}
             />
+
             <Text style={{
                 marginLeft:"5%",
                 marginBottom:"10px"
-            }} > Confirma Senha:</Text>
-            <TextInput onChangeText={text => setConfirmarSenha(text)}
+            }} > 
+                Confirma Senha:
+            </Text>
+
+            <TextInput 
+                onChangeText={text => setConfirmarSenha(text)}
                 value={confirmar}
-                style={{
-                color:"black",
-                backgroundColor:"white",
-                borderRadius:"5px",
-                height:"25px",
-                marginLeft:"5%",
-                marginBottom:"12px",
-                width:"90%"
-            }}
-            secureTextEntry = {true}
+                style={styles.input2}
+                secureTextEntry = {true}
             />
+
             <Text style={{
                 marginLeft:"5%",
                 marginBottom:"10px"
-            }} > Deseja Receber Notificações? </Text>
+            }} > 
+                Deseja Receber Notificações? 
+            </Text>
+
             <Switch style={{
                 marginLeft:"7%",
                 height:"20px"
@@ -156,7 +163,11 @@ export default function Cadastro(props){
                 thumbColor={ "#000" }
                 activeThumbColor={"#000"}
             />
-            <TouchableOpacity title="Cadastrar" onPress={() => goToUsuarios()}>
+
+            <TouchableOpacity 
+                title="Cadastrar" 
+                onPress={() => goToUsuarios()}>
+
                 <View style={{
                     width:"200px",
                     height:"60px",
@@ -166,18 +177,30 @@ export default function Cadastro(props){
                     borderRadius:"15px",
                     marginBottom:"10px"
                 }}>
-                <Text style={{color:"black", textAlign:"center", fontWeight:"bold"}}>Cadastrar</Text>
+
+                    <Text style={{color:"black", textAlign:"center", fontWeight:"bold"}}>
+                        Cadastrar
+                    </Text>
+
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity title="Voltar" onPress={() => props.navigation.navigate("Login")}>
+
+            <TouchableOpacity 
+                title="Voltar" 
+                onPress={() => props.navigation.navigate("Login")}>
+
                 <View style={{
                     width:"100px",
                     innerHeight:"40px",
                     backgroundColor:"white",
                     marginLeft:"34%"
                 }}>
-                <Text style={{color:"black", textAlign:"center"}}>Cancelar</Text>
+
+                    <Text style={{color:"black", textAlign:"center"}}>
+                        Cancelar
+                    </Text>
+
                 </View>
 
             </TouchableOpacity>

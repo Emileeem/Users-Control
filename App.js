@@ -17,7 +17,7 @@ export default function App() {
   //   title:"Main Dishes",
   //   data: ['Pizza', 'Burguer']
   // }]
-  const [utils, SetUtils] = useState({})
+  const [utils, SetUtils] = useState({users:[]})
   const Stack = createStackNavigator()
 
   return (
